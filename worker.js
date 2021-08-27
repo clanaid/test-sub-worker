@@ -14,9 +14,10 @@ onmessage = function (e) {
   if (!sw) {
     try{
       sw = new Worker("./subworker.js");
-      sw.onmessage = (e) => {
-        postMessage(e.data);
-      };
+      this.postMessage("create sub worker")
+      // sw.onmessage = (e) => {
+      //   postMessage(e.data);
+      // };
     }catch(e){
       this.postMessage(e)
     }

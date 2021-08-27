@@ -1,4 +1,4 @@
-console.log("create main worker", this);
+// console.log("create main worker", this);
 let sw;
 
 // const blob = new Blob(

@@ -1,4 +1,5 @@
-console.log = (...args) => write(args)
+setTimeout(() => {
+  // console.log = (...args) => write(args)
 const worker = new Worker("./worker.js");
 
 function write(...args) {
@@ -19,3 +20,5 @@ worker.onmessage = (e) => {
 };
 
 worker.postMessage("hello");
+
+}, 1000);

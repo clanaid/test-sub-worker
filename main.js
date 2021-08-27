@@ -1,8 +1,9 @@
+console.log = (...args) => write(args)
 const worker = new Worker("./worker.js");
 
-function write(msg) {
+function write(...args) {
   const el = document.getElementById("text");
-  el.textContent += `\n${msg}`;
+  el.innerText += args.join()+"\n";
 }
 
 // const blob = new Blob(["importScripts('http://127.0.0.1:3000/worker.js');"], {
@@ -11,9 +12,10 @@ function write(msg) {
 // const blobUrl = URL.createObjectURL(blob);
 // const worker = new Worker(blobUrl);
 
+
 worker.onmessage = (e) => {
-  console.log("main", e);
-  write(e.data);
+  console.log("main", e.data);
+  // write(e.data);
 };
 
 worker.postMessage("hello");

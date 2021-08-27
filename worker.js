@@ -12,10 +12,15 @@ let sw;
 onmessage = function (e) {
   console.log("mainworker: ", e);
   if (!sw) {
-    sw = new Worker("./subworker.js");
-    sw.onmessage = (e) => {
-      postMessage(e.data);
-    };
+    try{
+      sw = new Worker("./subworker.js");
+      sw.onmessage = (e) => {
+        postMessage(e.data);
+      };
+    }catch(e){
+      this.postMessage(e)
+    }
+   
   }
 };
 
